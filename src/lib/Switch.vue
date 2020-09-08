@@ -1,5 +1,5 @@
 <template>
-  <button :class="{checked}" @click=toggle><span></span></button>
+  <button class="grape-switch" :class="{'grape-checked': checked }" @click="toggle"><span></span></button>
 </template>
 
 <script lang="ts">
@@ -19,7 +19,7 @@ export default {
 <style lang='scss' scoped>
 $h: 22px;
 $h2: $h - 4px;
-button {
+.grape-switch {
   height: $h;
   width: 2*$h;
   border: none;
@@ -36,7 +36,7 @@ button {
     border-radius: $h2/2;
     transition: all .25s;
   }
-  &.checked {
+  &.grape-checked {
     background-color: blue;
     > span{
       left: calc(100% - #{$h2} - 2px);
@@ -50,7 +50,7 @@ button {
       width: $h2+4px;
     }
   }
-  &.checked:active {
+  &.grape-checked:active {
     >span {
       width: $h2 + 4px;
       margin-left: -4px;
