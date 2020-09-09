@@ -1,21 +1,21 @@
 <template>
-<button class="grape-btn" :class="classes" :disabled="disabled">
-  <span v-if="loading" class="grape-loadingIndicator"></span>
-  <slot/>
-</button>
+  <button class="grape-btn" :class="classes" :disabled="disabled">
+    <span v-if="loading" class="grape-loadingIndicator"></span>
+    <slot/>
+  </button>
 </template>
 
 <script lang="ts">
 import {computed} from 'vue'
 export default {
   props:{
-    theme: {
+    type: {
       type: String,
       default: 'button'
     },
     size: {
       type: String,
-      default: 'normal'
+      default: ''
     },
     disabled: {
       type: Boolean,
@@ -27,9 +27,9 @@ export default {
     }
   },
   setup(props){
-    const {theme, size} = props
+    const {type, size} = props
     const classes = computed(()=>{
-      return { [`grape-btn-${theme}`]: theme,
+      return { [`grape-btn-${type}`]: type,
         [`grape-btn-${size}`]: size }
     })
     return {classes}
@@ -42,7 +42,6 @@ $border-color: #d9d9d9;
 $color: #333;
 $blue: #1890ff;
 $red: #ff4d4f;
-$grey: grey;
 $radius: 4px;
 .grape-btn{
   height: $h;
@@ -88,6 +87,11 @@ $radius: 4px;
     background-color: $blue;
     text-shadow: 0 -1px 0 rgba(0,0,0,.12);
     box-shadow: 0 2px 0 rgba(0,0,0,.045);
+    &:hover, &:focus{
+      color: #fff;
+      background-color: #40a9ff;
+      border-color: #40a9ff;
+    }
     &[disabled] {
       cursor: not-allowed;
       color: rgba(0,0,0,.25);
@@ -161,25 +165,11 @@ $radius: 4px;
     font-size: 16px;
     height: 40px;
     padding: 0 15px;
-    &[disabled] {
-      cursor: not-allowed;
-      color: $grey;
-      &:hover {
-        border-color: $grey;
-      }
-    }
   }
   &.grape-btn-small{
     font-size: 14px;
     height: 24px;
     padding: 0 7px;
-    &[disabled] {
-      cursor: not-allowed;
-      color: $grey;
-      &:hover {
-        border-color: $grey;
-      }
-    }
   }
   > .grape-loadingIndicator{
     width: 14px;
