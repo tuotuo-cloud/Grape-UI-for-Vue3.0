@@ -11,7 +11,6 @@ export default {
   setup(){
     const deviceWidth = document.documentElement.clientWidth
     const asideVisible = ref(deviceWidth > 500)
-    console.log(asideVisible.value)
     provide('asideVisible', asideVisible)
     router.afterEach(()=>{
       if(deviceWidth<=500){
