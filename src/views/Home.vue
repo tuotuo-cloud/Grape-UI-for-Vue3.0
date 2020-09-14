@@ -91,6 +91,7 @@ export default{
         font-weight: 500;
         font-size: 2.4em;
         margin: 0 0 10px;
+        color: #393954;
         display: none;
       }
       > h1{
@@ -142,7 +143,7 @@ export default{
   padding-bottom: 70px;
   > .inner{
     max-width: 900px;
-    margin: 0 auto;
+    margin: 10px auto 0;
     text-align: center;
     > .point{
       width: 33%;
