@@ -1,5 +1,5 @@
 <template>
-  <svg class="icon">
+  <svg class="grape-icon">
     <use :xlink:href="'#'+name"></use>
   </svg>
 </template>
@@ -15,12 +15,11 @@ try {
 }
 export default {
   props: ["name"],
-  name: "Icon",
 };
 </script>
 
-<style lang='scss' scoped>
-.icon{
+<style lang="scss">
+.grape-icon{
   width: 1em;
   height: 1em;
   vertical-align: -0.15em;
@@ -28,3 +27,4 @@ export default {
   overflow: hidden;
 }
 </style>
+

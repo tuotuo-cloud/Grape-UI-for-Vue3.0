@@ -1,11 +1,19 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+$purple: #2c1b4b;
+$font-color: #666699;
+$bg-purple: #aa8dd8;
+
+html{
+  font-size: 14px;
 }
 
 body{
-  font-size: 14px;
+  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $font-color;
+  margin: 0;
+  background-color: #fff;
 }
 
 ul,ol>li{
@@ -15,15 +23,4 @@ ul,ol>li{
 a{
   text-decoration: none;
   color: inherit;
-  &:hover{
-    border-bottom: 1px solid #2c3e50;
-    cursor: pointer;
-  }
-}
-
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
 }

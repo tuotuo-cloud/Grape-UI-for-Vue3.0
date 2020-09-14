@@ -1,5 +1,5 @@
 <template>
-  <TopNav/>
+  <Header />
   <main id="main" class="fix-sidebar">
     <aside class="sidebar" v-if="asideVisible">
       <div class="sidebar-inner">
@@ -29,12 +29,11 @@
 </template>
 
 <script lang="ts">
-import Header from '../components/header.vue';
-import TopNav from '../components/TopNav.vue';
+import Header from '../components/Header/Header.vue';
 import {inject, Ref} from 'vue';
 
 export default {
-  components: {Header, TopNav},
+  components: {Header},
   setup() {
     const asideVisible = inject<Ref<boolean>>('asideVisible');
     return {asideVisible};
