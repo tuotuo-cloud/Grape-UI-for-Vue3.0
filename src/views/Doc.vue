@@ -3,26 +3,27 @@
   <main id="main" class="fix-sidebar">
     <aside class="sidebar" v-if="asideVisible">
       <div class="sidebar-inner">
-        <div class="list">
-          <h2>组件列表</h2>
-          <ul class="menu-root">
+        <h2>组件列表</h2>
+        <ul class="menu-root">
             <li>
               <router-link to="/document/button">Button 按钮</router-link>
             </li>
             <li>
-              <router-link to="/document/switch">Switch 按钮</router-link>
+              <router-link to="/document/switch">Switch 切换开关</router-link>
             </li>
             <li>
-              <router-link to="/document/dialog">Dialog 按钮</router-link>
+              <router-link to="/document/dialog">Dialog 对话框</router-link>
             </li>
             <li>
-              <router-link to="/document/tabs">Tabs 按钮</router-link>
+              <router-link to="/document/menu">Menu 导航菜单</router-link>
+            </li>
+            <li>
+              <router-link to="/document/alert">Alert 提示框</router-link>
             </li>
           </ul>
-        </div>
       </div>
     </aside>
-    <main class="content guide">
+    <main class="content guide" :class="{'with-sidebar': asideVisible}">
       <router-view></router-view>
     </main>
   </main>
@@ -70,15 +71,24 @@ export default {
     transition: all .4s cubic-bezier(0.4, 0, 0, 1);
   }
 }
-.sidebar, .sidebar-inner{
-  width: 260px;
-}
-.sidebar-inner{
-  padding: 60px 10px 30px 20px;
-}
 @media screen and (max-width: 1300px){
-  .content{
-    margin-left: 290px;
+  .content.with-sidebar{
+    margin-left: 230px;
+  }
+}
+.sidebar{
+  box-shadow: 1px 0 6px rgba(0,0,0,0.2);
+  > .sidebar-inner{
+    width: 200px;
+    padding: 35px 0 60px 20px;
+    > h2{
+      margin-top: .2em;
+    }
+    > .menu-root{
+      padding-left: 0;
+      margin: 0;
+      line-height: 2em;
+    }
   }
 }
 .content{

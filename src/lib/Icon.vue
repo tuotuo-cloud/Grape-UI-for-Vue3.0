@@ -1,20 +1,13 @@
 <template>
-  <svg class="grape-icon">
-    <use :xlink:href="'#'+name"></use>
-  </svg>
+  <i class="grape-icon" />
 </template>
 
 <script lang="ts">
-let importAll = (requireContext: __WebpackModuleApi.RequireContext)=>{
-  requireContext.keys().forEach(requireContext)
-};
-try {
-  importAll(require.context("../assets/icons", true, /\.svg$/));
-} catch (error) {
-  console.log(error);
-}
 export default {
-  props: ["name"],
+  setup(props){
+    const iconType = props.type
+    return {iconType}
+  }
 };
 </script>
 
