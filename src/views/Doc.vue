@@ -3,24 +3,22 @@
   <main id="main" class="fix-sidebar">
     <aside class="sidebar" v-if="asideVisible">
       <div class="sidebar-inner">
-        <h2>组件列表</h2>
+        <h2>文档</h2>
         <ul class="menu-root">
-            <li>
-              <router-link to="/document/button">Button 按钮</router-link>
-            </li>
-            <li>
-              <router-link to="/document/switch">Switch 切换开关</router-link>
-            </li>
-            <li>
-              <router-link to="/document/dialog">Dialog 对话框</router-link>
-            </li>
-            <li>
-              <router-link to="/document/menu">Menu 导航菜单</router-link>
-            </li>
-            <li>
-              <router-link to="/document/alert">Alert 提示框</router-link>
-            </li>
-          </ul>
+          <li v-for="title1 in menu" :key="title1.title">
+            <template v-if="title1.path">
+              <router-link :to="`/document/${title1.path}`" :class="{'active': current===title1.path}"><h3>{{ title1.title }}</h3></router-link>
+            </template>
+            <template v-else>
+              <h3>{{ title1.title }}</h3>
+              <ul class="menu-sub">
+                <li v-for="title2 in title1.children" :key="title2.title">
+                  <router-link :to="`/document/${title2.path}`" :class="{'active': current===title2.path}">{{ title2.title }}</router-link>
+                </li>
+              </ul>
+            </template>
+          </li>
+        </ul>
       </div>
     </aside>
     <main class="content guide" :class="{'with-sidebar': asideVisible}">
@@ -31,13 +29,26 @@
 
 <script lang="ts">
 import Header from '../components/Header/Header.vue';
-import {inject, Ref} from 'vue';
+import {menu} from '../constant.ts'
+import {inject, ref, Ref} from 'vue';
+import {useRoute} from 'vue-router';
+import {router} from '../router';
 
 export default {
   components: {Header},
   setup() {
+    const route = useRoute()
+    const current = ref(route.path.split('/')[2])
+    router.afterEach(()=>{
+      current.value = route.path.split('/')[2]
+    })
+    console.log('Doc!!!!!!!!!!!!!!!!!')
+    // const current = ref(menu[0]['title'])
+    // const toggle = (e)=>{
+    //   now.value = e.target.innerHTML
+    // }
     const asideVisible = inject<Ref<boolean>>('asideVisible');
-    return {asideVisible};
+    return {asideVisible, menu, current};
   }
 };
 </script>
@@ -76,21 +87,35 @@ export default {
     margin-left: 230px;
   }
 }
-.sidebar{
-  box-shadow: 1px 0 6px rgba(0,0,0,0.2);
-  > .sidebar-inner{
-    width: 200px;
-    padding: 35px 0 60px 20px;
-    > h2{
-      margin-top: .2em;
-    }
-    > .menu-root{
-      padding-left: 0;
-      margin: 0;
-      line-height: 2em;
-    }
-  }
+
+.sidebar {
+  box-shadow: 1px 0 6px rgba(0, 0, 0, 0.2);
 }
+.sidebar > .sidebar-inner {
+  width: 200px;
+  padding: 35px 0 60px 20px;
+}
+.sidebar h2 {
+  margin-top: .2em;
+}
+.sidebar ul{
+  padding-left: 1em;
+  margin: 0;
+  line-height: 1.5em;
+  list-style-type: none;
+}
+.sidebar li {
+  margin-top: 0.5em;
+}
+.sidebar .menu-root {
+  padding-left: 0;
+}
+
+.active {
+  color: #aa8dd8;
+
+}
+
 .content{
   position: relative;
   padding: 35px 0 35px 50px;

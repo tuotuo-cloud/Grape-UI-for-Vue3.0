@@ -33,7 +33,6 @@ export default {
 
     onMounted(() => {
       watchEffect(() => {
-        console.log(selectedItem);
         const {width} = selectedItem.value.getBoundingClientRect();
         indicator.value.style.width = width + 'px';
 

@@ -12,7 +12,7 @@
             Vue3.0<br/>UI组件库
           </h1>
           <p>
-            <router-link to="/document" class="button start">起步</router-link>
+            <router-link to="/document/guide" class="button start">起步</router-link>
             <a href="https://gitee.com" class="button grey has-icon">
               <img src="../assets/gitee.png" alt="gitee"/>
               GITEE</a>
@@ -138,6 +138,7 @@ export default{
     }
   }
 }
+
 #highlights{
   background-color: #fff;
   padding-bottom: 70px;
