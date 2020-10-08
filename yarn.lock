@@ -241,11 +241,6 @@
     "@types/express-serve-static-core" "*"
     "@types/mime" "*"
 
-"@types/webpack-env@^1.15.2":
-  version "1.15.2"
-  resolved "https://registry.npm.taobao.org/@types/webpack-env/download/@types/webpack-env-1.15.2.tgz#927997342bb9f4a5185a86e6579a0a18afc33b0a"
-  integrity sha1-knmXNCu59KUYWobmV5oKGK/DOwo=
-
 "@vue/compiler-core@3.0.0-rc.1":
   version "3.0.0-rc.1"
   resolved "https://registry.npm.taobao.org/@vue/compiler-core/download/@vue/compiler-core-3.0.0-rc.1.tgz?cache=0&sync_timestamp=1599065975387&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40vue%2Fcompiler-core%2Fdownload%2F%40vue%2Fcompiler-core-3.0.0-rc.1.tgz#66459f085b07408ddff0868199e2ceb7ddf8845a"

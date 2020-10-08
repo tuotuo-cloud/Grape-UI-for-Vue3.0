@@ -1,11 +1,15 @@
 <template>
   <div id="mobile-bar">
-    <a class="menu-button" @click="toggleAside"/>
-    <a class="logo" href="/"/>
+    <a class="menu-button" @click="toggleAside">
+      <svg class="icon"><use xlink:href="#icon-menu"></use></svg>
+    </a>
+    <a class="logo" href="/">
+      <svg class="icon"><use xlink:href="#icon-logo"></use></svg>
+    </a>
   </div>
   <header id="header">
     <a id="logo" href="/">
-      <img src="../../assets/logo.png" :class="{'hide': logoHide}" alt="grape logo"/>
+      <svg class="icon" :class="{'hide': logoHide}"><use xlink:href="#icon-logo"></use></svg>
       <span>Grape-UI</span>
     </a>
     <Header-nav/>
@@ -53,8 +57,11 @@ export default {
     height: 24px;
     top: 8px;
     left: 12px;
-    background: url("../../assets/menu.svg") center center no-repeat;
-    background-size: 24px;
+    > .icon {
+      width: 24px;
+      height: 24px;
+      fill: #304455;
+    }
   }
   >.logo{
     position: absolute;
@@ -63,8 +70,10 @@ export default {
     top: 5px;
     left: 50%;
     margin-left: -15px;
-    background: url("../../assets/logo.png") center center no-repeat;
-    background-size: 30px;
+    > .icon{
+      width: 30px;
+      height: 30px;
+    }
   }
 }
 #header{
@@ -84,7 +93,7 @@ export default {
     color: $font-color;
     font-family: "Dosis", "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
     font-weight: 500;
-    > img {
+    > svg {
       vertical-align: middle;
       margin-right: 6px;
       width: 40px;

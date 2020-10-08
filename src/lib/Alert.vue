@@ -2,10 +2,14 @@
   <transition name="animationBox">
     <div v-if="alertVisibility" class="grape-alert"
          :class="`grape-alert-${alertType} ${description?'grape-alert-with-description':''} ${iconVisibility?'':'grape-alert-no-icon'} ${banner?'grape-alert-banner':''}`">
-      <i class="grape-alert-icon" v-if="iconVisibility" :class="alertType"/>
+      <svg class="grape-alert-icon" v-if="iconVisibility" :class="alertType">
+        <use :xlink:href="`#icon-${description?'big':'small'}-${alertType}`"></use>
+      </svg>
       <span class="grape-alert-message">{{message}}</span>
       <span class="grape-alert-description" v-if="description">{{description}}</span>
-      <button class="grape-alert-close-icon" v-if="closable" @click="closeHandle"/>
+      <svg class="grape-alert-close-icon" v-if="closable" @click="closeHandle">
+        <use xlink:href="#icon-close"></use>
+      </svg>
     </div>
   </transition>
 </template>
@@ -77,20 +81,16 @@ export default {
   width: 1em;
   height: 1em;
   &.success{
-    background: url("../assets/small-success.svg") center center no-repeat;
-    background-size: 14px;
+    fill: #52c41a;
   }
   &.info{
-    background: url("../assets/small-info.svg") center center no-repeat;
-    background-size: 14px;
+    fill: #1890ff;
   }
   &.warning{
-    background: url("../assets/small-warning.svg") center center no-repeat;
-    background-size: 14px;
+    fill: #faad14;
   }
   &.error{
-    background: url("../assets/small-error.svg") center center no-repeat;
-    background-size: 14px;
+    fill: #f5222d;
   }
 }
 .grape-alert{
@@ -140,8 +140,6 @@ export default {
   line-height: 22px;
   cursor: pointer;
   border: none;
-  background: url("../assets/close.svg") center center no-repeat;
-  background-size: 10px;
   transition: background-color .3s;
   &:hover{
     border: 1px solid rgba(0,0,0,0.45);
@@ -169,22 +167,6 @@ export default {
   font-size: 24px;
   top: 15px;
   left: 24px;
-  &.success{
-    background: url("../assets/big-success.svg") center center no-repeat;
-    background-size: 24px;
-  }
-  &.info{
-    background: url("../assets/big-info.svg") center center no-repeat;
-    background-size: 24px;
-  }
-  &.warning{
-    background: url("../assets/big-warning.svg") center center no-repeat;
-    background-size: 24px;
-  }
-  &.error{
-    background: url("../assets/big-error.svg") center center no-repeat;
-    background-size: 24px;
-  }
 }
 .grape-alert-with-description.grape-alert-no-icon{
   padding: 15px;
@@ -199,6 +181,7 @@ export default {
   display: block;
 }
 .grape-alert-with-description > .grape-alert-close-icon{
-  background-size: 10px;
+  width: 10px;
+  height: 10px;
 }
 </style>

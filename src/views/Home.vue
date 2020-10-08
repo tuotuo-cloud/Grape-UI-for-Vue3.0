@@ -4,7 +4,9 @@
     <div id="hero">
       <div class="inner">
         <div class="left">
-          <img src="../assets/logo.png" class="hero-logo" alt="grape logo"/>
+          <svg class="icon hero-logo">
+            <use xlink:href="#icon-logo"/>
+          </svg>
         </div>
         <div class="right">
           <h2>Grape UI</h2>
@@ -14,7 +16,9 @@
           <p>
             <router-link to="/document/guide" class="button start">起步</router-link>
             <a href="https://gitee.com" class="button grey has-icon">
-              <img src="../assets/gitee.png" alt="gitee"/>
+              <svg class="icon gitee">
+                <use xlink:href="#icon-gitee"></use>
+              </svg>
               GITEE</a>
           </p>
         </div>
@@ -44,11 +48,6 @@
     </div>
   </main>
   <footer id="footer">
-    <p>
-      <a class="social-icon footer_gitee" href="https://github.com/vuejs/vue" target="_blank" rel="noopener"/>
-      <a class="social-icon footer_twitter" href="https://twitter.com/vuejs" target="_blank" rel="noopener"/>
-      <a class="social-icon footer_mit" href="https://medium.com/the-vue-point" target="_blank" rel="noopener"/>
-    </p>
     <p>遵循 <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener">MIT 开源协议</a><br>
       Copyright © 2020 Usami Ahikiko</p>
   </footer>
@@ -63,6 +62,10 @@ export default{
 
 <style lang="scss" scoped>
 @import "../index.scss";
+
+main{
+  padding-top: 61px;
+}
 
 #hero{
   padding: 40px 40px 30px;
@@ -121,12 +124,13 @@ export default{
             background-color: #f6f6f6;
             color: #4f5959;
             border-color: #f6f6f6;
-            > img {
+            > svg.gitee {
               position: absolute;
               left: 0.4em;
               top: 50%;
               transform: translateY(-50%);
-              width: 2em;
+              width: 3em;
+              height: 2em;
             }
           }
           &.has-icon{
