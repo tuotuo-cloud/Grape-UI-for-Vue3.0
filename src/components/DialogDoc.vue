@@ -1,5 +1,5 @@
 <template>
-<div>Dialog</div>
+  <div>Dialog</div>
   <Button type="primary" @click="showDialog">Open Dialog</Button>
   <Dialog v-model:visible="visible" :title="'基础对话框'">
     <template v-slot:content>内容</template>

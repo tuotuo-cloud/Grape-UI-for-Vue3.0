@@ -1,7 +1,7 @@
 <template>
   <Header />
-  <main id="main" class="fix-sidebar">
-    <aside class="sidebar" v-if="asideVisible">
+  <main id="main">
+    <aside class="sidebar" :class="{'open': asideVisible}">
       <div class="sidebar-inner">
         <h2>文档</h2>
         <ul class="menu-root">
@@ -21,7 +21,7 @@
         </ul>
       </div>
     </aside>
-    <main class="content guide" :class="{'with-sidebar': asideVisible}">
+    <main id="page" :class="{'with-sidebar': asideVisible}">
       <router-view></router-view>
     </main>
   </main>
@@ -42,11 +42,6 @@ export default {
     router.afterEach(()=>{
       current.value = route.path.split('/')[2]
     })
-    console.log('Doc!!!!!!!!!!!!!!!!!')
-    // const current = ref(menu[0]['title'])
-    // const toggle = (e)=>{
-    //   now.value = e.target.innerHTML
-    // }
     const asideVisible = inject<Ref<boolean>>('asideVisible');
     return {asideVisible, menu, current};
   }
@@ -54,45 +49,54 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#main.fix-sidebar .sidebar {
+.sidebar {
+  box-sizing: border-box;
   position: fixed;
   z-index: 10;
   top: 61px;
   left: 0;
   bottom: 0;
+  width: 18em;
   overflow-x: hidden;
   overflow-y: auto;
+  box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255,255,255,0.95);
 }
 
-@media screen and (max-width: 900px) {
-  .sidebar.open{
-    transform: translate(0,0);
+#page{
+  padding: 35px 0 35px 50px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+@media (min-width: 900px){
+  #page {
+    margin-left: 260px;
+  }
+  #main {
+    padding-top: 61px;
   }
 }
-@media screen and (max-width: 900px) {
-  #main{
-    padding: 2em 1.4em 0;
+@media (max-width: 900px){
+  #main {
+    padding-top: 40px;
   }
   .sidebar {
-    background-color: #f9f9f9;
-    height: 100%;
-    top: 0;
-    left: 0;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    transition: all .4s cubic-bezier(0.4, 0, 0, 1);
+    top: 40px;
+    transform: translate(-18em, 0);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0, 1);
   }
-}
-@media screen and (max-width: 1300px){
-  .content.with-sidebar{
-    margin-left: 230px;
+  .sidebar.open{
+    transform: translate(0, 0);
+  }
+  #page.with-sidebar{
+    margin-left: 260px;
   }
 }
 
-.sidebar {
-  box-shadow: 1px 0 6px rgba(0, 0, 0, 0.2);
-}
 .sidebar > .sidebar-inner {
-  width: 200px;
+  box-sizing: border-box;
+  width: 100%;
   padding: 35px 0 60px 20px;
 }
 .sidebar h2 {
@@ -110,16 +114,7 @@ export default {
 .sidebar .menu-root {
   padding-left: 0;
 }
-
 .active {
   color: #aa8dd8;
-
-}
-
-.content{
-  position: relative;
-  padding: 35px 0 35px 50px;
-  max-width: 700px;
-  margin: 0 auto;
 }
 </style>

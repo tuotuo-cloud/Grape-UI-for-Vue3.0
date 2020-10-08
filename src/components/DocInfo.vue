@@ -1,22 +1,5 @@
 <template>
-  <div>haha</div>
-  <div>haha</div>
-  <div>haha</div>
-  <div>haha</div>
-  <div>haha</div>
-  <div>haha</div>
-  <div>haha</div>
-  <div>haha</div>
-  <div>haha</div>
-  <div>haha</div>
-  <div>haha</div>
-  <div>haha</div>
-  <div>haha</div>
-  <div>haha</div>
-  <div>haha</div>
-  <div>haha</div>
-  <div>haha</div>
-  <div>haha</div>
+  <div>介绍</div>
 </template>
 
 <script lang="ts">

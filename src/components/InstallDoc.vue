@@ -1,5 +1,5 @@
 <template>
-Install
+  <div>Install</div>
 </template>
 
 <script lang="ts">

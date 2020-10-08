@@ -1,17 +1,15 @@
 <template>
-  <div class="docs">
-    <div id="mobile-bar">
-      <a class="menu-button" @click="toggleAside"/>
-      <a class="logo" href="/"/>
-    </div>
-    <header id="header">
-      <a id="logo" href="/">
-        <img src="../../assets/logo.png" :class="{'hide': logoHide}" alt="grape logo"/>
-        <span>Grape-UI</span>
-      </a>
-      <Header-nav/>
-    </header>
+  <div id="mobile-bar">
+    <a class="menu-button" @click="toggleAside"/>
+    <a class="logo" href="/"/>
   </div>
+  <header id="header">
+    <a id="logo" href="/">
+      <img src="../../assets/logo.png" :class="{'hide': logoHide}" alt="grape logo"/>
+      <span>Grape-UI</span>
+    </a>
+    <Header-nav/>
+  </header>
 </template>
 
 <script lang="ts">
@@ -36,21 +34,17 @@ export default {
 
 <style lang='scss'>
 @import "../../index.scss";
-.docs{
-  padding-top: 61px;
-}
 @media screen and (max-width: 900px ) {
   #mobile-bar {display: block}
   #header {display: none}
-  .docs {padding-top: 0;}
 }
-.docs #mobile-bar{
+#mobile-bar{
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 40px;
-  background-color: transparent;
+  background-color: #ffffff;
   box-shadow: none;
   z-index: 20;
   >.menu-button{
@@ -73,7 +67,7 @@ export default {
     background-size: 30px;
   }
 }
-.docs #header{
+#header{
   position: fixed;
   width: 100%;
   top: 0;
